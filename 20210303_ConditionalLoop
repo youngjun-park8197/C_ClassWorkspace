@@ -16,9 +16,8 @@ int main() {
 		a++;
 	}
 
-	printf("==== [while]문을 이용한 짝수 누적 계산 ====\n");
+	printf("::: [while]문을 이용한 짝수 누적 계산 :::\n");
 	printf("\t      result : %d \n", result);
-	printf("===========================================\n");
 	printf("\n\n\n\n");
 
 
@@ -28,19 +27,18 @@ int main() {
 		if (a % 2 == 1) { result += a; }
 	}
 
-	printf("==== [for]문을 이용한 홀수 누적 계산 ====\n");
+	printf("::: [for]문을 이용한 홀수 누적 계산 :::\n");
 	printf("\t      result : %d \n", result);
-	printf("=========================================\n");
 	printf("\n\n\n\n");
 
 	a = temp;
 	printf("%d에서 %d사이의 5의 배수는 : \n", a, b);
 	for (int i = a; i <= b; i++) {
 		if (i % 5 == 0) { 
-			printf("%7d ", i); 
+			printf("%4d ", i);
 		}
 	}
-	printf("입니다.");
+	printf("입니다.\n\n\n");
 	
 	return 0;
 }
