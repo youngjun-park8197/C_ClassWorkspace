@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int main() {
+	int a = 1, b = 100, result = 0;
+	int temp = a;							// 변수 a의 초기값 보관용
+
+	printf("범위 지정을 위한 두 값을 입력하세요 : ");
+	scanf_s("%d %d", &a, &b);
+
+	printf("a = %d\nb = %d\n", a, b);
+	printf("temp의 값은 : %d \n", temp);
+	printf("\n\n");
+
+	while (a <= b) {
+		if (a % 2 == 0) { result += a; }
+		a++;
+	}
+
+	printf("==== [while]문을 이용한 짝수 누적 계산 ====\n");
+	printf("\t      result : %d \n", result);
+	printf("===========================================\n");
+	printf("\n\n\n\n");
+
+
+	result = 0, a = temp;
+	for (int i = a; a <= b; a++)
+	{
+		if (a % 2 == 1) { result += a; }
+	}
+
+	printf("==== [for]문을 이용한 홀수 누적 계산 ====\n");
+	printf("\t      result : %d \n", result);
+	printf("=========================================\n");
+	printf("\n\n\n\n");
+
+	a = temp;
+	printf("%d에서 %d사이의 5의 배수는 : \n", a, b);
+	for (int i = a; i <= b; i++) {
+		if (i % 5 == 0) { 
+			printf("%7d ", i); 
+		}
+	}
+	printf("입니다.");
+	
+	return 0;
+}
