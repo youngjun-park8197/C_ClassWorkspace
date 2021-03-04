@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void ConvertCase(char buf[]);
+
+int main() {
+	char buf[100];
+	int bufLen = sizeof(buf) / sizeof(char);
+
+	while (1) {
+		printf("==========================");
+		printf("\n문자열을 입력하세요 : ");
+		scanf_s("%s", buf, bufLen);
+		ConvertCase(buf);
+	}
+
+	return 0;
+}
+
+
+void ConvertCase(char buf[]) {
+	int row;
+	char change[100];
+
+	printf("\n입력한 문자열 : %s \n", buf);
+	
+	for (row = 0; buf[row] != 0; row++) {
+		printf("\nBefore convertion buf[%d] : %c \n", row, buf[row]);
+
+		if (buf[row] >= 'a' && buf[row] <= 'z') {
+			char temp = buf[row];
+			temp -= 32;
+			printf("\nAfter convertion buf[%d] : %c \n", row, temp);
+
+			change[row] = temp;
+		}
+	}
+
+	printf("\n변환 후 문자열 : %s \n", change);
+}
