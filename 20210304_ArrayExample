@@ -38,3 +38,53 @@ void ConvertCase(char buf[]) {
 
 	printf("\n변환 후 문자열 : %s \n", change);
 }
+
+########################################################################################
+
+@ 가장 작은 수 찾기 (포인터 활용)
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int FindMinVal(int *arr, int size);
+
+int main() {
+	int arr[5] = { 0 };
+	int index = 0, inputNum, minVal;
+
+	// 5개의 정수 입력
+	printf("5개의 정수를 입력하세요: \n");
+
+	while (index < 5) {
+		scanf_s("%d", &inputNum);
+		arr[index] = inputNum;
+		index++;
+	}
+
+	for (int i = 0; i < 5; i++) {
+		printf("\n배열 arr[%d] = %d\n", i, arr[i]);
+	}
+
+	
+	// 가장 작은 값 찾는 함수
+	minVal = FindMinVal(arr, 5);
+	printf("가장 작은 수 : %d \n", minVal);
+
+	return 0;
+}
+
+// 배열을 매개 변수로 받는 함수를 사용 : 가장 작은 수 찾기
+int FindMinVal(int *arr, int size) {
+
+	// arr[0]의 값을 가장 작은 값으로 가정
+	int minVal = *arr;									
+
+	for (int index = 0; index < size; index++) {	
+		// 기준이 되는 arr[0]에 저장된 값을 시작으로 다음 인덱스 값과 비교
+		if (minVal > *(arr + index)) {					
+			minVal = *(arr + index);		
+		}
+	}
+	
+	return minVal;
+}
