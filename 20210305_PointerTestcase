@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int findMinVal(int* arr_min, int size);
+void swapVal(int* num0, int* num1);
+void sortVal(int* arr_sort);
+//int commonDiv(int* maxDiv1, int* maxDiv2);
+
+int main() {
+	int arr[5] = { 0 };
+	int i = 0, inputNum, minVal;
+
+	// 5개의 정수 입력
+	printf("5개의 정수를 입력하세요: \n");
+
+	while (i < 5) {
+		scanf_s("%d", &inputNum);
+		arr[i] = inputNum;
+		i++;
+	}
+
+	//commonDiv(arr, arr+1);
+	printf("---------------------------------------------------\n\n");
+
+	// 가장 작은 값 찾는 함수
+	minVal = findMinVal(arr, 5);
+	printf("\n가장 작은 수 : %d \n\n", minVal);
+
+	printf("---------------------------------------------------\n\n");
+	printf("입력된 숫자 중 처음 두 수는 [ %d ] 와 [ %d ]입니다. \n\n", arr[0], arr[1]);
+	// swap(&arr[0], &arr[1]); - arr의 실제 인자값를 전달해주지만 함수에서는 포인터 변수로 간접적으로 참조
+	swapVal(arr, arr+1);
+	printf("두 수를 바꾼 결과는 [ %d ] 와 [ %d ] 입니다. \n\n", arr[0], arr[1]);
+	
+	printf("---------------------------------------------------\n\n");	
+	sortVal(arr);
+
+	printf("---------------------------------------------------\n");
+	
+
+	return 0;
+}
+
+// 배열을 매개 변수로 받는 함수를 사용 : 가장 작은 수 찾기
+int findMinVal(int* arr_min, int size) {
+
+	// arr[0]의 값을 가장 작은 값으로 가정
+	int minVal = *arr_min;
+
+	for (int i = 0; i < size; i++) {
+		// 기준이 되는 arr[0]에 저장된 값을 시작으로 다음 인덱스 값과 비교
+		if (minVal > *(arr_min + i)) {
+			minVal = *(arr_min + i);
+		}
+	}
+
+	return minVal;
+}
+
+
+void swapVal(int* num0, int* num1) {
+	int val = *num0;
+	*num0 = *num1;
+	*num1 = val;
+}
+
+// 메인 함수에서 전달받은 실제 arr의 주소값을 sortVal 함수에서 arr_sort 포인터 변수로 참조해서 쓰겠다 라는 의미
+void sortVal(int* arr_sort) {
+	int temp = 0;
+
+	for (int i = 0; i < 4; i++) {
+		for (int j = i + 1; j < 5; j++) {
+			if (*(arr_sort + i) > *(arr_sort + j)) {
+				temp = *(arr_sort + i);
+				*(arr_sort + i) = *(arr_sort + j);
+				*(arr_sort + j) = temp;
+			}
+		}
+	}
+
+	printf("\n\n정렬된 배열 확인 : ");
+	for (int i = 0; i < sizeof(arr_sort)+1; i++) {
+		printf("%d ", *(arr_sort+i));
+	}
+	printf("\n");
+}
