@@ -54,7 +54,6 @@ int chrFind(const char* str, char chr) {
 	char str1[30];
 	char str2[10];
 
-
 	int result;
 
 	fputs("What's your favorite computer language? : ", stdout);
