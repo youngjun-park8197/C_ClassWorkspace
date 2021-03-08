@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int Prompt(const char* ptString, int* val);
+int chrFind(const char* str, char chr);
+
+int main() {
+
+	//int inputA, inputB, result;
+
+	/*
+	Prompt("A를 입력하세요 : ", &inputA);
+	result = Prompt("B를 입력하세요 : ", &inputB);
+	printf("A : %d, \t B:%d, \t result : %d \n\n", inputA, inputB, result);
+	*/
+
+	const char* str = "saedfjhsadbflksjdncv";
+
+	printf("문자열 : %s\n", str);
+	printf("찾은 결과 %c의 위치: %d \n", 'a', chrFind(str, 'a'));
+	printf("찾은 결과 %c의 위치: %d \n", 'e', chrFind(str, 'e'));
+	printf("찾은 결과 %c의 위치: %d \n", 'c', chrFind(str, 'c'));
+	
+	return 0;
+}
+
+
+int Prompt(const char* ptString, int* val) {
+	char buf[256];
+	printf("%s", ptString);
+
+	fgets(buf, 256, stdin);		// 문자열을 받음
+	*val = atoi(buf);
+
+	return *val;
+}
+
+
+int chrFind(const char* str, char chr) {
+	int i;
+	i = 0;
+	
+	//while (*(str+i)) {					//문자열의 끝 \0(null)이 나올 때까지 검색
+	//	if (*(str + i++) == chr) return i-1;
+	//}
+
+	for (; i < strlen(str); i++) {
+		if (*(str + i) == chr) return i;
+	}
+}
+
+/*
+	char str1[30];
+	char str2[10];
+
+
+	int result;
+
+	fputs("What's your favorite computer language? : ", stdout);
+	fgets(str2, sizeof(str2), stdin);
+
+	printf("\n");
+
+	fputs("input(string) : ", stdout);
+	fgets(str1, sizeof(str1), stdin);
+
+	fputs("result(integer) : ", stdout);
+	result = atoi(str1);
+
+	printf("%d\n", result);
+*/
