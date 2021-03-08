@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main() {
+	int i, j, k, m;
+	int inputNum;
+
+	printf("칸 수를 입력하세요 : ");
+	scanf_s("%d", &inputNum);					// 칸 수 입력
+
+	k = (128 - 1)/inputNum + 1;					// k칸의 줄 수 : (출력 갯수 - 1) / (입력한 칸 수) + 1
+
+	for (i = 0; i < k; i++) {					// k칸 만큼 출력
+		for (j = 0; j < inputNum; j++) {
+			m = i + j * k;						// i줄 j칸에 출력될 문자
+			if (m == 7 || m == 8 || m == 9 || m == 10 || m == 13 || m == 27) {
+				printf("%3d [%02x] :  \t", m, m);
+			}
+			else {
+				printf("%3d [%02x] : %c\t", m, m, m);
+			}
+		}
+		printf("\n");
+	}
+	return 0;
+}
+
