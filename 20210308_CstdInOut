@@ -17,14 +17,15 @@ int main() {
 	*/
 
 	const char* str = "abcdefghacdbijklmnopqr";
+	const char* findStr = "acdb";
 
 	printf("문자열 : %s\n", str);
 	printf("찾은 결과 %c의 위치: %d \n", 'm', chrFind(str, 'm'));
 	printf("찾은 결과 %c의 위치: %d \n", 'e', chrFind(str, 'e'));
 	printf("찾은 결과 %c의 위치: %d \n", 'c', chrFind(str, 'c'));
 
-	printf("문자열 str과 findStr의 비교 결과 : %d\n", strFind(str, "acdb"));
-	
+	printf("문자열 str 안에 %s 문자열이 시작되는 위치 : %d\n", findStr, strFind(str, "acdb"));
+		
 	return 0;
 }
 
@@ -60,9 +61,7 @@ int strFind(const char* str, const char* findStr) {
 	for (int i = 0; *(str + i); i++) {
 		p = chrFind(str+i, *findStr);
 		if (p == -1) return -1;
-
-		//findStr의 길이만큼 비교해서 완전히 같다면 그 위치가 str에 완전히 속해있는 findStr의 위치임
-		if (strncmp(str + p, findStr, strlen(findStr)) == 0) return p;
+		if (strncmp(str+p+i, findStr, strlen(findStr)) == 0) return p+i; //findStr의 길이만큼 비교해서 완전히 같다면 그 위치가 str에 완전히 속해있는 findStr의 위치임
 	}
 
 	return -1;
