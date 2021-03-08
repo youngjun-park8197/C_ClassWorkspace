@@ -5,6 +5,7 @@
 int Prompt(const char* ptString, int* val);
 int chrFind(const char* str, char chr);
 
+
 int main() {
 
 	//int inputA, inputB, result;
@@ -38,16 +39,15 @@ int Prompt(const char* ptString, int* val) {
 
 
 int chrFind(const char* str, char chr) {
-	int i;
-	i = 0;
+	int i = 0;
 	
 	//while (*(str+i)) {					//문자열의 끝 \0(null)이 나올 때까지 검색
 	//	if (*(str + i++) == chr) return i-1;
 	//}
 
-	for (; i < strlen(str); i++) {
+	for (; i < strlen(str); i++)
 		if (*(str + i) == chr) return i;
-	}
+	return -1;
 }
 
 /*
