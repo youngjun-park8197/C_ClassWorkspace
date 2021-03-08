@@ -11,7 +11,7 @@ int main() {
 
 	for (i = 0; i < k; i++) {					// k칸 만큼 출력
 		for (j = 0; j < inputNum; j++) {
-			m = i + j * k;						// i줄 j칸에 출력될 문자
+			m = i + j * k;					// i줄 j칸에 출력될 문자
 			excep = m;
 			if (excep == 7 || excep == 8 || excep == 9 || excep == 10 || excep == 13 || excep == 27) {
 				printf("%3d [%02x] :  \t", m, m);
