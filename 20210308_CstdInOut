@@ -58,7 +58,7 @@ int strFind(const char* str, const char* findStr) {
 	// str = "abcdefghacdbijklmnopqr",  findStr = "acdb"
 	int i, j, k, p, result;
 
-	for (int i = 0; *(str + i); i++) {
+	for (int i = 0; *(str + i); i+=p+1) {
 		p = chrFind(str+i, *findStr);
 		if (p == -1) return -1;
 		if (strncmp(str+p+i, findStr, strlen(findStr)) == 0) return p+i; //findStr의 길이만큼 비교해서 완전히 같다면 그 위치가 str에 완전히 속해있는 findStr의 위치임
