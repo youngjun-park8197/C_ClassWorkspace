@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_DEPRECATE
+
+#include <stdio.h>
+#include <io.h>
+#include <stdlib.h>
+
+#define PNUM 100
+
+// 입력 데이터 파일 open (read)
+// --->		이름		과목명1		과목명2		과목명3		과목명4		[총점]		[평균]		[석차]	
+// --->		홍길동	점수1		점수2		점수3		점수4		정수			실수			등수
+//
+//
+
+int main() {
+	int* eng, * kor, * math;
+	int i, count, n;
+	char **name;
+
+	FILE* scoreTable = fopen("C:\\Users\\wook\\source\\repos\\20210309_Cclassroom\\20210309_Cclassroom\\scores.txt", "rb");
+
+	eng = (int*)malloc(sizeof(int) * PNUM);
+	kor = (int*)malloc(sizeof(int) * PNUM);
+	math = (int*)malloc(sizeof(int) * PNUM);
+
+	// name = (char**)malloc(PNUM * 10);
+
+	for (i = 0; i < PNUM; i++) {
+		count = fscanf(scoreTable, "%d	%d	%d", eng + i, kor + i, math + i);
+		if (count != 3) break;
+	}
+
+	n = i;
+
+	for (int i = 0; i < n; i++) {
+		printf("%d	%d	%d\n", *(eng + i), *(kor + i), *(math + i));
+	}
+
+
+	return 0;
+}
+
