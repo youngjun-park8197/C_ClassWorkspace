@@ -7,7 +7,7 @@
 int main() {
 
 	FILE* fp = fopen("D:\\workspace\\test.txt", "ab");   // ab : append + binary mode
-	//fopen_s(&fp, "D:\workspace\test.txt", "ab");
+	// fopen_s(&fp, "D:\workspace\test.txt", "ab");
 
 	if (fp == NULL) {
 		printf("파일 열기 실패 \n");
