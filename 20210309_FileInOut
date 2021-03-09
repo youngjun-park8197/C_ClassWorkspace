@@ -4,27 +4,52 @@
 #include <stdlib.h>
 #include <io.h>
 
+
+// procedure(프로시저 함수) = subroutine(서브루틴) = module(모듈)
+void FileTest()
+{
+	char buf[256]; // 키보드가 아닌 파일에서 읽어들일 예정
+
+	FILE* fp = fopen("C:\\Users\\wook\\source\\repos\\20210309_Cclassroom\\20210309_Cclassroom\\test.txt", "rb");
+
+	fscanf(fp, "%s", buf);
+	printf("strings from file : [ \"%s\" ]\n", buf);
+
+	fclose(fp);
+}
+
+
 int main() {
 
-	FILE* fp = fopen("D:\\workspace\\test.txt", "ab");   // ab : append + binary mode
-	// fopen_s(&fp, "D:\workspace\test.txt", "ab");
+	FILE* fp = fopen("C:\\Users\\wook\\source\\repos\\20210309_Cclassroom\\20210309_Cclassroom\\test.txt", "ab"); // ab : 추가 + 바이너리 모드
+	// fopen_s (& fp, "D:\\workspace\\test.txt", "ab");
 
 	if (fp == NULL) {
 		printf("파일 열기 실패 \n");
 		return 1;
 	}
 
-	//fprintf(fp, "Hello Everybody!");
-	
-	char buf[256]; // 키보드가 아닌 파일에서 읽어들일 예정
-	for (int i = 0; i < 3; i++) {
-		fscanf(fp, "%s", buf);
-		printf("%s\n", buf);
-	}
+	// char buf[256]; // 키보드가 아닌 파일에서 읽어 들일 예정
+	// while(fscanf(fp, "%s", buf) != EOF) {
+	//	 printf("%s\n", buf);
+	// }
+
+	fprintf(fp, "Hello Everybody!");
+
+	FileTest();
 
 	fclose(fp);
 
 	return 0;
 }
 
+
+#############################################################################################################################
+
+!! 위 파일 입출력 수행 시 인코딩 에러 발생 해결 방법
+
+비주얼 스튜디오의 경우, UTF-8 인코딩을 자동으로 찾게끔 옵션이 설정되어있음
+이를 해제 시키고 파일 입출력 수행
+
+도구 -> 옵션 -> 텍스트 에디터 -> 일반 -> "Auto-detect UTF-8 enconding without signature" 를 해제
 
