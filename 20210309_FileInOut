@@ -1,0 +1,30 @@
+#define _CRT_SECURE_NO_DEPRECATE
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <io.h>
+
+int main() {
+
+	FILE* fp = fopen("D:\\workspace\\test.txt", "ab");   // ab : append + binary mode
+	//fopen_s(&fp, "D:\workspace\test.txt", "ab");
+
+	if (fp == NULL) {
+		printf("파일 열기 실패 \n");
+		return 1;
+	}
+
+	//fprintf(fp, "Hello Everybody!");
+	
+	char buf[256]; // 키보드가 아닌 파일에서 읽어들일 예정
+	for (int i = 0; i < 3; i++) {
+		fscanf(fp, "%s", buf);
+		printf("%s\n", buf);
+	}
+
+	fclose(fp);
+
+	return 0;
+}
+
+
