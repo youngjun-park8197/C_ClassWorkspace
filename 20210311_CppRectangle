@@ -1,0 +1,43 @@
+using namespace std;
+
+#include <iostream>
+#include <math.h>
+
+struct Point {		// 구조체 정의
+	int x;
+	int y;
+};
+
+struct Rect {
+	Point p1;
+	Point p2;
+
+	int area() {
+		int x = abs(p2.x - p1.x);
+		int y = abs(p2.y - p1.y);
+		return x * y;
+	}
+
+	double distance() {
+		int x = p2.x - p1.x;
+		int y = p2.y - p1.y;
+		double dis = sqrt(pow(x, 2) + pow(y, 2));	// (x2 - x1)^2 + (y2 - y1)^2 의 루트값이 점 간 거리
+	
+		return dis;
+	}
+};
+
+int main() {
+
+	Rect r1 = { {10,10}, {20, 20} };
+
+	cout << "두 점 p1(10, 10)와 p2(" << r1.p2.x << ", " << r1.p2.y 
+		 << ")로 구성되는 사각형 넓이 = " << r1.area() << endl;
+
+	cout << "두 점 p1(10, 10)와 p2(" << r1.p2.x << ", " << r1.p2.y
+		 << ") 사이의 거리 = " << r1.distance() << endl;
+
+	return 0;
+}
+
+
