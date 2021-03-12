@@ -26,7 +26,7 @@ public:
 };
 
 class Rect {
-	Point p1, p2;						                            // 멤버 변수
+	Point p1, p2;					    // 멤버 변수
 public:
 
 	Rect(Point p_n1, Point p_n2) : p1(p_n1), p2(p_n2) { // 인자가 있는 생성자 ( 인자는 함수의 로컬 변수와 동일)
@@ -49,7 +49,7 @@ public:
 	}
 };
 
-class RectEx : public Rect {			                    // Rect 클래스를 상속, private 
+class RectEx : public Rect {			                  // Rect 클래스를 상속, private 
 public:
 	RectEx(Point p_n1, Point p_n2) {	                  // Rect 클래스의 Point p1, p2에 접근하기 위해서 setP1을 활용하여 초기화(생성자)
 		setP1(p_n1);
@@ -57,14 +57,14 @@ public:
 	}
 
 	double distance() {
-		int x = getX();					   // RectEx 클래스에서 Rect 클래스의 getX 메소드에 접근하여 x 값을 가져옴
+		int x = getX();					  // RectEx 클래스에서 Rect 클래스의 getX 메소드에 접근하여 x 값을 가져옴
 		int y = getY();
 		return sqrt(pow(x, 2) + pow(y, 2));
 	}
 };
 
 int func(Rect* r);
-int func2(Rect& r);						   // 레퍼런스 정의(포인터 X, &를 통한 주소 전달)
+int func2(Rect& r);						  // 레퍼런스 정의(포인터 X, &를 통한 주소 전달)
 
 int main() {
 	int n1 = 10, n2 = 20;
@@ -87,11 +87,11 @@ int main() {
 int func(Rect* r1) {
 	cout << "두 점 p1(10,10)과 p2(20,20)으로 이루어진 사각형의 넓이 = " << r1->area() << endl;
 	return 0;
-}										                                  // 포인터 변수를 통한 접근 시에는 -> 사용
+}								  // 포인터 변수를 통한 접근 시에는 -> 사용
 
 int func2(Rect& r1) {
 	cout << "두 점 p1(10,10)과 p2(20,20)으로 이루어진 사각형의 넓이 = " << r1.area() << endl;
 	return 0;
-}										                                  // 레퍼런스로 받은 함수도 . 으로 접근하여 사용
+}								  // 레퍼런스로 받은 함수도 . 으로 접근하여 사용
 
 
